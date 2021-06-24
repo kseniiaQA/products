@@ -22,9 +22,9 @@ public class Smartphone extends Product {
         return manufacturer;
     }
 
-    public void setManufacturer(String manufacturer) {
+  /*  public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
-    }
+    }*/
 
 //    public int getPages() {
 //        return pages;
@@ -42,7 +42,7 @@ public class Smartphone extends Product {
 //        this.publishedYear = publishedYear;
 //    }
 
-    @Override
+   /* @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -59,7 +59,7 @@ public class Smartphone extends Product {
         return Objects.hash(super.hashCode(), manufacturer);
 
     }
-
+*/
     @Override
     public String toString() {
         return "Smartphone{" +

@@ -21,10 +21,10 @@ public class Book extends Product {
     public String getAuthor() {
         return author;
     }
-
-    public void setAuthor(String author) {
+}
+   /* public void setAuthor(String author) {
         this.author = author;
-    }
+    }*/
 
 //    public int getPages() {
 //        return pages;
@@ -42,25 +42,16 @@ public class Book extends Product {
 //        this.publishedYear = publishedYear;
 //    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Book book = (Book) o;
-//        return pages == book.pages &&
-//                publishedYear == book.publishedYear &&
-        return Objects.equals(author, book.author);
-    }
 
+/*
     @Override
     public int hashCode() {
 //        return Objects.hash(super.hashCode(), author, pages, publishedYear);
         return Objects.hash(super.hashCode(), author);
 
-    }
+    }*/
 
-    @Override
+  /*  @Override
     public String toString() {
         return "Book{" +
                 "author='" + author + '\'' +
@@ -68,4 +59,4 @@ public class Book extends Product {
 //                ", publishedYear=" + publishedYear +
                 '}';
     }
-}
+}*/
