@@ -23,9 +23,8 @@ class ProductRepositoryTest {
         assertArrayEquals(expected, actual);
     }
 
-
     @Test
-    public void test() {
+    public void test1() {
         ProductRepository repo = new ProductRepository();
 
         repo.save(first);
@@ -33,8 +32,20 @@ class ProductRepositoryTest {
         repo.save(third);
 
 
-        Assertions.assertThrows(NotFoundException.class, () -> repo.removeById(-3));
+        Assertions.assertThrows(NotFoundException.class, () -> repo.removeById(-6));
+
+    }
+
+    @Test
+    public void test2() {
+        ProductRepository repo = new ProductRepository();
+
+        repo.save(first);
+        repo.save(second);
+        repo.save(third);
+
+
+        Assertions.assertThrows(NotFoundException.class, () -> repo.removeById(-600));
 
     }
 }
-
