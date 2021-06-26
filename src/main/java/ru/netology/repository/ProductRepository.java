@@ -31,7 +31,7 @@ public class ProductRepository {
     public void removeById(int id) throws NotFoundException {
         if (id < 0) {
             throw new NotFoundException(
-                    "Нельзя удалить отрицательный id" + id
+                    "Данный id существует" + id
             );
 
         }

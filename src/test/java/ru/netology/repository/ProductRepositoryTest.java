@@ -48,4 +48,17 @@ class ProductRepositoryTest {
         Assertions.assertThrows(NotFoundException.class, () -> repo.removeById(-600));
 
     }
+
+    @Test
+    public void test3() {
+        ProductRepository repo = new ProductRepository();
+
+        repo.save(first);
+        repo.save(second);
+        repo.save(third);
+
+
+        Assertions.assertThrows(NullPointerException.class, () -> repo.removeById(5));
+
+    }
 }
