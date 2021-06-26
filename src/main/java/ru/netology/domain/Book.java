@@ -22,41 +22,4 @@ public class Book extends Product {
         return author;
     }
 }
-   /* public void setAuthor(String author) {
-        this.author = author;
-    }*/
-
-//    public int getPages() {
-//        return pages;
-//    }
-//
-//    public void setPages(int pages) {
-//        this.pages = pages;
-//    }
-//
-//    public int getPublishedYear() {
-//        return publishedYear;
-//    }
-//
-//    public void setPublishedYear(int publishedYear) {
-//        this.publishedYear = publishedYear;
-//    }
-
-
-/*
-    @Override
-    public int hashCode() {
-//        return Objects.hash(super.hashCode(), author, pages, publishedYear);
-        return Objects.hash(super.hashCode(), author);
-
-    }*/
-
-  /*  @Override
-    public String toString() {
-        return "Book{" +
-                "author='" + author + '\'' +
-//                ", pages=" + pages +
-//                ", publishedYear=" + publishedYear +
-                '}';
-    }
-}*/
+ 
