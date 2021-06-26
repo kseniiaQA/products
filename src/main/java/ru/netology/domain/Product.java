@@ -52,6 +52,10 @@ public class Product extends ProductRepository {
                 Objects.equals(name, product.name);
     }
 
+    public int getId() {
+        return id;
+    }
+
   /*  @Override
     public int hashCode() {
         return Objects.hash(id, name, price);

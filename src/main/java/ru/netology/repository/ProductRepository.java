@@ -3,6 +3,7 @@ package ru.netology.repository;
 import ru.netology.domain.Product;
 
 public class ProductRepository {
+
     private Product[] items = new Product[0];
 
     public void save(Product item) {
@@ -18,16 +19,22 @@ public class ProductRepository {
         return items;
     }
 
-//    public Product findById(int id) {
-//        for (Product item : items) {
-//            if (item.getId() == id) {
-//                return item;
-//            }
-//        }
-//        return null;
-//    }
+    public Product findById(int id) {
+        for (Product item : items) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
+    }
 
-  /*  public void removeById(int id) {
+    public void removeById(int id) throws NotFoundException {
+        if (id < 0) {
+            throw new NotFoundException(
+                    "Нельзя удалить отрицательный id" + id
+            );
+
+        }
         int length = items.length - 1;
         Product[] tmp = new Product[length];
         int index = 0;
@@ -40,5 +47,5 @@ public class ProductRepository {
         items = tmp;
     }
 
-}*/
+
 }

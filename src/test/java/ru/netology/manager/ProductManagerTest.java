@@ -49,3 +49,4 @@ class ProductManagerTest {
         assertArrayEquals(new Product[]{},productManager.searchBy("В"));
     }
 }
+
