@@ -42,7 +42,9 @@ public class Product extends ProductRepository {
         this.price = price;
     }*/
 
- @Override
+
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -55,8 +57,13 @@ public class Product extends ProductRepository {
     public int getId() {
         return id;
     }
+    public boolean matches(String search) {
+        return name.contains(search);
+    }
 
-  /*  @Override
+
+
+    @Override
     public int hashCode() {
         return Objects.hash(id, name, price);
     }
@@ -68,8 +75,7 @@ public class Product extends ProductRepository {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 '}';
-    }*/
-
+    }
 }
 
 
