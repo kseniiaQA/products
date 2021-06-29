@@ -5,7 +5,7 @@ import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
 
-public class ProductManager {
+public class ProductManager<first, second, third> {
     ProductRepository productRepository;
 
     ProductManager(ProductRepository productRepository) {
@@ -48,4 +48,10 @@ public class ProductManager {
         }
         return result;
     }
+
 }
+
+
+
+
+

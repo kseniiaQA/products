@@ -18,29 +18,31 @@ public class Product extends ProductRepository {
         this.price = price;
     }
 
-    public int getId() {
+  /*  public int getId() {
         return id;
-    }
+    }*/
 
-    public void setId(int id) {
+   /* public void setId(int id) {
         this.id = id;
-    }
+    }*/
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+  /*  public void setName(String name) {
         this.name = name;
-    }
+    }*/
 
-    public int getPrice() {
+   /* public int getPrice() {
         return price;
     }
-
-    public void setPrice(int price) {
+*/
+   /* public void setPrice(int price) {
         this.price = price;
-    }
+    }*/
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -51,6 +53,15 @@ public class Product extends ProductRepository {
                 price == product.price &&
                 Objects.equals(name, product.name);
     }
+
+    public int getId() {
+        return id;
+    }
+    public boolean matches(String search) {
+        return name.contains(search);
+    }
+
+
 
     @Override
     public int hashCode() {
@@ -65,7 +76,6 @@ public class Product extends ProductRepository {
                 ", price=" + price +
                 '}';
     }
-
 }
 
 
