@@ -21,5 +21,35 @@ public class Book extends Product {
     public String getAuthor() {
         return author;
     }
+    @Override
+
+    public boolean matches(String search) {
+        return super.matches(search) || author.contains(search);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Book book = (Book) o;
+        
+        return Objects.equals(author, book.author);
+    }
+
+    @Override
+    public int hashCode() {
+//        return Objects.hash(super.hashCode(), author, pages, publishedYear);
+        return Objects.hash(super.hashCode(), author);
+
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "author='" + author + '\'' +
+//                ", pages=" + pages +
+//                ", publishedYear=" + publishedYear +
+                '}';
+    }
 }
- 
