@@ -29,10 +29,9 @@ public class ProductRepository {
     }
 
     public void removeById(int id) throws NotFoundException {
-        if (id < 0) {
-            throw new NotFoundException(
-                    "Данный id существует" + id
-            );
+        if (findById(id)==null) {
+            throw new NotFoundException("Элемент с id = "+id+" не найден!");
+
 
         }
         int length = items.length - 1;
