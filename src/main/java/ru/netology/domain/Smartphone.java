@@ -22,27 +22,15 @@ public class Smartphone extends Product {
         return manufacturer;
     }
 
-  /*  public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }*/
+  
 
-//    public int getPages() {
-//        return pages;
-//    }
-//
-//    public void setPages(int pages) {
-//        this.pages = pages;
-//    }
-//
-//    public int getPublishedYear() {
-//        return publishedYear;
-//    }
-//
-//    public void setPublishedYear(int publishedYear) {
-//        this.publishedYear = publishedYear;
-//    }
+   
+   @Override
+   public boolean matches(String search) {
+       return super.matches(search) || manufacturer.contains(search);
+   }
 
-   /* @Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -59,13 +47,12 @@ public class Smartphone extends Product {
         return Objects.hash(super.hashCode(), manufacturer);
 
     }
-*/
+
     @Override
     public String toString() {
         return "Smartphone{" +
                 "manufacturer='" + manufacturer + '\'' +
-//                ", pages=" + pages +
-//                ", publishedYear=" + publishedYear +
+
                 '}';
     }
 }
