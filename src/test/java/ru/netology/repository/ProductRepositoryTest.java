@@ -46,7 +46,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    public void shouldSaveOneItem() {
+    public void shouldSaveAnItem() {
         repository.save(coreJava);
 
         Product[] expected = new Product[]{coreJava};
