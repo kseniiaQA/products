@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">statistics</a> &gt; <a href="index.source.html" class="el_package">ru.netology.manager</a> &gt; <span class="el_source">ProductManager.java</span></div><h1>ProductManager.java</h1><pre class="source lang-java linenums">package ru.netology.manager;
+
+import ru.netology.domain.Book;
+import ru.netology.domain.Product;
+import ru.netology.domain.Smartphone;
+import ru.netology.repository.ProductRepository;
+
+public class ProductManager&lt;first, second, third&gt; {
+    ProductRepository productRepository;
+
+<span class="fc" id="L11">    ProductManager(ProductRepository productRepository) {</span>
+<span class="fc" id="L12">        this.productRepository = productRepository;</span>
+<span class="fc" id="L13">    }</span>
+
+    public void add(Product product) {
+<span class="fc" id="L16">        productRepository.save(product);</span>
+<span class="fc" id="L17">    }</span>
+
+    public boolean matches(Product product, String search) {
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        if (product instanceof Book) { // если в параметре product лежит объект класса Book</span>
+<span class="fc" id="L21">            Book book = (Book) product; // положем его в переменную типа Book чтобы пользоваться методами класса Book</span>
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">            if (((Book) product).getAuthor().contains(search)) { // проверим есть ли поисковое слово в данных об авторе</span>
+<span class="nc" id="L23">                return true;</span>
+            }
+<span class="fc" id="L25">            return product.getName().contains(search);</span>
+        }
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">        if (product instanceof Smartphone) { // если в параметре product лежит объект класса Smartphone</span>
+<span class="fc" id="L28">            Smartphone smartphone = (Smartphone) product; // положем его в переменную типа Smartphone чтобы пользоваться методами класса Smartphone</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">            if (((Smartphone) product).getManufacturer().contains(search)) { // проверим есть ли поисковое слово в данных об производителе</span>
+<span class="nc" id="L30">                return true;</span>
+            }
+<span class="fc" id="L32">            return product.getName().contains(search);</span>
+        }
+<span class="nc" id="L34">        return false;</span>
+    }
+
+    public Product[] searchBy(String text) {
+<span class="fc" id="L38">        Product[] result = new Product[0];</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        for (Product product : productRepository.findAll()) {</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            if (matches(product, text)) {</span>
+<span class="fc" id="L41">                Product[] tmp = new Product[result.length + 1];</span>
+                // используйте System.arraycopy, чтобы скопировать всё из result в tmp
+<span class="fc" id="L43">                System.arraycopy(result, 0, tmp, 0, result.length);</span>
+                // сделано
+<span class="fc" id="L45">                tmp[tmp.length - 1] = product;</span>
+<span class="fc" id="L46">                result = tmp;</span>
+            }
+        }
+<span class="fc" id="L49">        return result;</span>
+    }
+
+}
+
+
+
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

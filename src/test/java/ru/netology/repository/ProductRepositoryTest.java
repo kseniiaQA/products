@@ -4,22 +4,19 @@ import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
-
-import ru.netology.repository.NotFoundException;
-import ru.netology.repository.ProductRepository;
+import ru.netology.exception.NotFoundException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductRepositoryTest {
     private ProductRepository repository = new ProductRepository();
     private Book coreJava = new Book();
-
     Book book1 = new Book(0, "Война и мир", 132, "Лев Толстой");
     Book book2 = new Book(1, "Приключения Нильса", 99, "Сельма Лагерлеф");
     Smartphone smartphone1 = new Smartphone(2, "ВоСониПлюс", 31500, "Сони");
     Smartphone smartphone2 = new Smartphone(3, "ТруПлэжа", 7200, "Самсунг");
     @Test
-    public void shouldDeleteItem() throws NotFoundException {
+    public void shouldDeleteItem() {
         repository.save(book1);
         repository.save(book2);
         repository.save(smartphone1);
