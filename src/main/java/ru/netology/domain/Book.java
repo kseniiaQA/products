@@ -22,7 +22,7 @@ public class Book extends Product {
         return author;
     }
     @Override
-//    override нужен?
+
     public boolean matches(String search) {
         return super.matches(search) || author.contains(search);
     }
@@ -33,8 +33,7 @@ public class Book extends Product {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Book book = (Book) o;
-//        return pages == book.pages &&
-//                publishedYear == book.publishedYear &&
+
         return Objects.equals(author, book.author);
     }
 

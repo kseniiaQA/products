@@ -1,18 +1,52 @@
 package ru.netology.repository;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
+import ru.netology.domain.Smartphone;
+
+import ru.netology.repository.NotFoundException;
+import ru.netology.repository.ProductRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductRepositoryTest {
     private ProductRepository repository = new ProductRepository();
     private Book coreJava = new Book();
-    private Product first;
-    private Product second;
-    private Product third;
+
+    Book book1 = new Book(0, "Война и мир", 132, "Лев Толстой");
+    Book book2 = new Book(1, "Приключения Нильса", 99, "Сельма Лагерлеф");
+    Smartphone smartphone1 = new Smartphone(2, "ВоСониПлюс", 31500, "Сони");
+    Smartphone smartphone2 = new Smartphone(3, "ТруПлэжа", 7200, "Самсунг");
+    @Test
+    public void shouldDeleteItem() throws NotFoundException {
+        repository.save(book1);
+        repository.save(book2);
+        repository.save(smartphone1);
+        repository.save(smartphone2);
+
+        repository.removeById(1);
+
+        assertArrayEquals(new Product[] {book1,smartphone1,smartphone2}, repository.findAll());
+    }
+
+    @Test
+    public void negativeId() {
+        repository.save(coreJava);
+
+        assertThrows(NotFoundException.class, () -> {
+            repository.removeById(-3);
+        });
+    }
+
+    @Test
+    public void outOfLength() {
+        repository.save(coreJava);
+//Этот тест наверное лишний. Повторяет предыдущий.
+        assertThrows(NotFoundException.class, () -> {
+            repository.removeById(10);
+        });
+    }
 
     @Test
     public void shouldSaveOneItem() {
@@ -21,44 +55,5 @@ class ProductRepositoryTest {
         Product[] expected = new Product[]{coreJava};
         Product[] actual = repository.findAll();
         assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void test1() {
-        ProductRepository repo = new ProductRepository();
-
-        repo.save(first);
-        repo.save(second);
-        repo.save(third);
-
-
-        Assertions.assertThrows(NotFoundException.class, () -> repo.removeById(-6));
-
-    }
-
-    @Test
-    public void test2() {
-        ProductRepository repo = new ProductRepository();
-
-        repo.save(first);
-        repo.save(second);
-        repo.save(third);
-
-
-        Assertions.assertThrows(NotFoundException.class, () -> repo.removeById(-600));
-
-    }
-
-    @Test
-    public void test3() {
-        ProductRepository repo = new ProductRepository();
-
-        repo.save(first);
-        repo.save(second);
-        repo.save(third);
-
-
-        Assertions.assertThrows(NullPointerException.class, () -> repo.removeById(5));
-
     }
 }
