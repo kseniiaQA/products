@@ -16,24 +16,6 @@ public class ProductManager {
         productRepository.save(product);
     }
 
-    public boolean matches(Product product, String search) {
-        if (product instanceof Book) { // если в параметре product лежит объект класса Book
-            Book book = (Book) product; // положем его в переменную типа Book чтобы пользоваться методами класса Book
-            if (((Book) product).getAuthor().contains(search)) { // проверим есть ли поисковое слово в данных об авторе
-                return true;
-            }
-            return product.getName().contains(search);
-        }
-        if (product instanceof Smartphone) { // если в параметре product лежит объект класса Smartphone
-            Smartphone smartphone = (Smartphone) product; // положем его в переменную типа Smartphone чтобы пользоваться методами класса Smartphone
-            if (((Smartphone) product).getManufacturer().contains(search)) { // проверим есть ли поисковое слово в данных об производителе
-                return true;
-            }
-            return product.getName().contains(search);
-        }
-        return false;
-    }
-
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
         for (Product product : productRepository.findAll()) {
